@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Character References")]
+    public PlayerMovement playerMovement;
+    public CharacterStats characterStats;
 
-    // Update is called once per frame
+    void Awake()
+    {
+        Debug.Log("Character Manager Awake");
+        if (playerMovement == null)
+        {
+            playerMovement = GetComponent<PlayerMovement>();
+        }
+        if (characterStats == null)
+        {
+            characterStats = GetComponent<CharacterStats>();
+        }
+        characterStats.SetStats();
+    }
     void Update()
     {
-        
+        playerMovement.MovePlayer(characterStats.currentSpeed);
     }
+
 }

@@ -262,6 +262,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7632970602904107246, guid: 42fdbd28cdb40fc499e0dc71e22aa2fd, type: 3}
+      propertyPath: minAge
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632970602904107246, guid: 42fdbd28cdb40fc499e0dc71e22aa2fd, type: 3}
+      propertyPath: maxAgeRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632970602904107246, guid: 42fdbd28cdb40fc499e0dc71e22aa2fd, type: 3}
+      propertyPath: maxHealthRange
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

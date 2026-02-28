@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37aef9ca8cf2aa146a9ffd515f1a5fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
+  lifeStage: 0
   maxHealth: 100
   strength: 10
   age: 25
@@ -60,6 +61,9 @@ MonoBehaviour:
   maxStrengthRange: 20
   maxAgeRange: 100
   maxSpeedRange: 10
+  childAge: 13
+  teenAge: 20
+  adultAge: 65
 --- !u!1 &3465617567392517871
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 867553968669077144}
+  - component: {fileID: 6481443344261781831}
   - component: {fileID: 7294469843496821308}
   - component: {fileID: 2010829225946021772}
   m_Layer: 0
@@ -233,6 +238,20 @@ Transform:
   - {fileID: 3332771985233307881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6481443344261781831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460493128228768277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d5450248120fb46856609325f14667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  playerMovement: {fileID: 7294469843496821308}
+  characterStats: {fileID: 7632970602904107246}
 --- !u!114 &7294469843496821308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   playerRigidbody: {fileID: 2010829225946021772}
   movementInputAction: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  movementSpeed: 5
 --- !u!50 &2010829225946021772
 Rigidbody2D:
   serializedVersion: 5

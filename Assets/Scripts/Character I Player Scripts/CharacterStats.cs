@@ -30,33 +30,39 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int childAge = 13;
     [SerializeField] private int teenAge = 20;
     [SerializeField] private int adultAge = 65;
+    [Header("Stat Growth Rates")]
+    [SerializeField] private float childGrowthRate = 0.5f;
+    [SerializeField] private float teenGrowthRate = 0.75f;
+    [SerializeField] private float adultGrowthRate = 1.0f;
+    [SerializeField] private float elderGrowthRate = 0.5f;
 
     /// <summary>
     /// Sets the characters stats based on the characters age
     /// </summary>
     public void SetStats()
     {
+        SetAge();
         switch (lifeStage)
         {
             case CharacterLifeStage.Child:
-                currentHealth = maxHealth / 2;
-                currentStrength = strength / 2;
-                currentSpeed = speed / 2;
+                currentHealth = SetHealth((int)(maxHealth * childGrowthRate));
+                currentStrength = SetStrength((int)(strength * childGrowthRate));
+                currentSpeed = SetSpeed((int)(speed * childGrowthRate));
                 break;
             case CharacterLifeStage.Teen:
-                currentHealth = (int)(maxHealth * 0.75f);
-                currentStrength = (int)(strength * 0.75f);
-                currentSpeed = (int)(speed * 0.75f);
+                currentHealth = SetHealth((int)(maxHealth * teenGrowthRate));
+                currentStrength = SetStrength((int)(strength * teenGrowthRate));
+                currentSpeed = SetSpeed((int)(speed * teenGrowthRate));
                 break;
             case CharacterLifeStage.Adult:
-                currentHealth = maxHealth;
-                currentStrength = strength;
-                currentSpeed = speed;
+                currentHealth = SetHealth((int)(maxHealth * adultGrowthRate));
+                currentStrength = SetStrength((int)(strength * adultGrowthRate));
+                currentSpeed = SetSpeed((int)(speed * adultGrowthRate));
                 break;
             case CharacterLifeStage.Elder:
-                currentHealth = (int)(maxHealth * 0.5f);
-                currentStrength = (int)(strength * 0.5f);
-                currentSpeed = (int)(speed * 0.5f);
+                currentHealth = SetHealth((int)(maxHealth * elderGrowthRate));
+                currentStrength = SetStrength((int)(strength * elderGrowthRate));
+                currentSpeed = SetSpeed((int)(speed * elderGrowthRate));
                 break;
         }
     }
