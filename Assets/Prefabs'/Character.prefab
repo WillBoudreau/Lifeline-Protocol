@@ -1,5 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2890738957461079297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2261263622465104668}
+  - component: {fileID: 1397943738395663023}
+  m_Layer: 0
+  m_Name: CharacterTraits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2261263622465104668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890738957461079297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 867553968669077144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397943738395663023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890738957461079297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05df892244463ae45b61a670eef9b0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterTraits
+  maxTraits: 3
+  maxSkills: 3
+  currentTraits: []
+  currentSkills: []
+  possibleTraits:
+  - Crew
+  - Passenger
+  - Engineer
+  - Scientist
+  - Doctor
+  - Security
+  - Pilot
+  - Communications
+  - Navigator
+  - Technician
+  possibleSkills:
+  - Repair
+  - Medical
+  - Combat
+  - Piloting
+  - Navigation
+  - Communication
+  - Technical
+  - Survival
+  - Leadership
+  - Stealth
 --- !u!1 &2939499223348250917
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,15 +125,19 @@ MonoBehaviour:
   currentSpeed: 0
   minHealth: 0
   minStrength: 0
-  minAge: 0
+  minAge: 20
   minSpeed: 0
   maxHealthRange: 200
   maxStrengthRange: 20
-  maxAgeRange: 100
+  maxAgeRange: 75
   maxSpeedRange: 10
   childAge: 13
   teenAge: 20
   adultAge: 65
+  childGrowthRate: 0.5
+  teenGrowthRate: 0.75
+  adultGrowthRate: 1
+  elderGrowthRate: 0.5
 --- !u!1 &3465617567392517871
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +310,7 @@ Transform:
   - {fileID: 4688441492095051523}
   - {fileID: 1670449632699895682}
   - {fileID: 3332771985233307881}
+  - {fileID: 2261263622465104668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6481443344261781831
@@ -252,6 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
   playerMovement: {fileID: 7294469843496821308}
   characterStats: {fileID: 7632970602904107246}
+  characterTraits: {fileID: 0}
 --- !u!114 &7294469843496821308
 MonoBehaviour:
   m_ObjectHideFlags: 0

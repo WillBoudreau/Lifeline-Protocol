@@ -3,8 +3,9 @@ using UnityEngine;
 public class CharacterManager : MonoBehaviour
 {
     [Header("Character References")]
-    public PlayerMovement playerMovement;
-    public CharacterStats characterStats;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private CharacterTraits characterTraits;
 
     void Awake()
     {
@@ -17,7 +18,12 @@ public class CharacterManager : MonoBehaviour
         {
             characterStats = GetComponent<CharacterStats>();
         }
+        if (characterTraits == null)
+        {
+            characterTraits = GetComponent<CharacterTraits>();
+        }
         characterStats.SetStats();
+        characterTraits.SetTraits(characterTraits.currentTraits, characterTraits.currentSkills);
     }
     void Update()
     {
