@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
@@ -6,10 +7,10 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private CharacterTraits characterTraits;
+    [SerializeField] private PlayerInteractions playerInteractions;
 
     void Awake()
     {
-        Debug.Log("Character Manager Awake");
         if (playerMovement == null)
         {
             playerMovement = GetComponent<PlayerMovement>();
@@ -22,12 +23,31 @@ public class CharacterManager : MonoBehaviour
         {
             characterTraits = GetComponent<CharacterTraits>();
         }
+        if (playerInteractions == null)
+        {
+            playerInteractions = GetComponent<PlayerInteractions>();
+        }
         characterStats.SetStats();
         characterTraits.SetTraits(characterTraits.currentTraits, characterTraits.currentSkills);
     }
     void Update()
     {
         playerMovement.MovePlayer(characterStats.currentSpeed);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            playerInteractions.currentObstacle = other.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            playerInteractions.currentObstacle = null;
+        }
     }
 
 }

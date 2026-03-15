@@ -14,6 +14,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movementInput = movementInputAction.FindAction("Move").ReadValue<Vector2>();
         playerRigidbody.linearVelocity = movementInput * movementSpeed;
-        Debug.Log($"Player Movement Input: {movementInput}, Speed: {movementSpeed}");
     }
 }
+    
