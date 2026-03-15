@@ -1,5 +1,8 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine.UI;
 
 
 public class ObstacleBehaviour : MonoBehaviour
@@ -14,10 +17,13 @@ public class ObstacleBehaviour : MonoBehaviour
     public float damagePerSecond;
     public bool isFixed;
     public bool isHallucination;
-
+    public float timeSpentFixing = 0f;
+    [Header("References")]
+    [SerializeField] private Image fixImage;
     private void Start()
     {
         SetObstacleType();
+        fixImage.fillAmount = 0f;
     }
 
    /// <summary>
@@ -69,9 +75,38 @@ public class ObstacleBehaviour : MonoBehaviour
     /// <summary>
     /// Fixes the obstacle, setting isFixed to true
     /// </summary>
-    public void FixObstacle()
+    public IEnumerator FixObstacle()
     {
+        StartCoroutine(DisplayFixProgress());
+        while (timeSpentFixing < timeToFix)
+        {
+            timeSpentFixing += Time.deltaTime;
+            yield return null;
+        }
         isFixed = true;
-        Debug.Log($"{obstacleType} fixed!");
+        Destroy(gameObject);
+    }
+    /// <summary>
+    /// Whn fixing the obstacle display the fix image to show progress
+    /// </summary>
+    private IEnumerator DisplayFixProgress()
+    {
+        while (timeSpentFixing < timeToFix)
+        {
+            timeSpentFixing += Time.deltaTime;
+            fixImage.fillAmount = timeSpentFixing / timeToFix;
+            yield return null;
+        }
+        fixImage.fillAmount = 0f;
+    }
+    /// <summary>
+    /// When the player is not interacting with the obstacle reset it 
+    /// </summary>
+    public void ResetObstacle()
+    {
+        StopAllCoroutines();
+        fixImage.fillAmount = 0f;
+        isFixed = false;
+        timeSpentFixing = 0f;
     }
 }

@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &192348864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7137796029369073788, guid: 36f97f603ceeaa24eb2411a9700e24b4, type: 3}
+  m_PrefabInstance: {fileID: 6019000181732761548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &949676846 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1397943738395663023, guid: 42fdbd28cdb40fc499e0dc71e22aa2fd, type: 3}
@@ -483,6 +494,7 @@ MonoBehaviour:
   damagePerSecond: 0
   isFixed: 0
   isHallucination: 0
+  fixImage: {fileID: 192348864}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

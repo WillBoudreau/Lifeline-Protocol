@@ -40,6 +40,7 @@ public class CharacterManager : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             playerInteractions.currentObstacle = other.gameObject;
+            playerInteractions.isInteracting = true;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -47,6 +48,8 @@ public class CharacterManager : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             playerInteractions.currentObstacle = null;
+            playerInteractions.isInteracting = false;
+            other.GetComponent<ObstacleBehaviour>().ResetObstacle();
         }
     }
 
